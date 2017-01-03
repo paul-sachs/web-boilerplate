@@ -88,5 +88,8 @@
     "redux-logger": "2.6.1",
     "redux-promise": "0.5.3",
     "reselect": "2.5.3"
+  },
+  "optionalDependencies": {
+    "varicent-common": "git+https://7ba38d71aaec4749025eec179eee6e2691c6872e:x-oauth-basic@github.ibm.com/Varicent/common-web.git"
   }
 }

@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const packages = require('../package.json');
+const packages = require('./package.json');
 
 const dependencies = Object.keys(packages.dependencies);
 
@@ -17,7 +17,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     library: '[name]_lib',
-    path: path.join(__dirname, '../dist/'),
+    path: path.join(__dirname, './dist/'),
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json']
@@ -30,7 +30,6 @@ module.exports = {
       'classnames',
 //      'express',
       'lodash',
-      'raven-js',
       'react-hot-loader',
       'react',
       'react-dom',
@@ -40,13 +39,14 @@ module.exports = {
       'react-redux',
       'react-router',
       'react-router-redux',
-      'reselect'
+      'reselect',
+      'varicent-common'
     ]
   },
 
   plugins: [
     new webpack.DllPlugin({
-      path: path.join(__dirname, '../dist/[name]-manifest.json'),
+      path: path.join(__dirname, './dist/[name]-manifest.json'),
       name: '[name]_lib'
     })
   ]

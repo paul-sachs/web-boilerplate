@@ -18,6 +18,11 @@ module.exports = {
     ],
     extensions: ['.js', '.jsx', '.json', '.scss']
   },
+  resolveLoader: {
+    alias: {
+      "locale-loader": path.join(__dirname, "./node_modules/varicent-common/webpack_loaders/locale-loader.js")
+    }
+  },
   plugins: [
     new webpack.DllReferencePlugin({
       context: '.',
@@ -53,6 +58,9 @@ module.exports = {
           limit: 8192,
           name: 'fonts/[name].[ext]?[hash]'
         }
+      }, {
+        test: /\.properties/,
+        loader: "locale-loader"
       }
     ]
   },

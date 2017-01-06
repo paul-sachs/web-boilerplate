@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
 import './sample.scss';
-import { Button, LocaleHelper, SearchBox } from 'varicent-common';
+import { Button, LocaleHelper, SearchBox, Table } from 'varicent-common';
 import {intlShape} from 'react-intl';
 
 @connect(state => ({
@@ -26,11 +26,9 @@ export class SampleContainer extends React.Component {
 
 	componentWillMount() {
     // this.Sample = createDocumentViewerComponent((store) => store.documentDashboard.fragments.documentViewer, prefix, viewerUrls);
-
   }
 
   formatMessage(id, values) {
-    // return localeFormat(id);
     return this.context.intl.formatMessage({ id });
   }
 
@@ -40,6 +38,7 @@ export class SampleContainer extends React.Component {
 			  <div className="b-sample-text">Hey this is a sample page, this text is styled with scss!</div>
         <Button>Open a Wizard</Button>
         {this.formatMessage('SAMPLE_TEXT')}
+        <Table columns={[]}/>
       </div>
 		);
 	}

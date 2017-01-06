@@ -92,6 +92,6 @@
     "reselect": "2.5.3"
   },
   "optionalDependencies": {
-    "varicent-common": "git+https://7ba38d71aaec4749025eec179eee6e2691c6872e:x-oauth-basic@github.ibm.com/jonaswee/common-web-2.git"
+    "varicent-common": "git+https://7ba38d71aaec4749025eec179eee6e2691c6872e:x-oauth-basic@github.ibm.com/jonaswee/common-web-2.git#test"
   }
 }

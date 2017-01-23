@@ -1,33 +1,34 @@
 import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {createActionCreators} from './sampleActionCreators.js';
-import {createActionTypes} from './sampleActionTypes.js';
 import './sample.scss';
-import { intlShape } from 'react-intl';
+import { BaseComponent } from '../../components/baseComponent.js';
+import { Button, Dropdown, Table } from '@fss/react-components';
 
+export class Sample extends BaseComponent {
+  static propTypes = {
+    // redux state
+    sample: PropTypes.object,
+    // attributes
+    someText: PropTypes.string,
+    // actions
+    clickButton: PropTypes.func
+  };
 
-export function createSampleComponent(selectState, prefix, urls) {
-  @connect(store => ({
-    sample: selectState(store)
-  }), createActionCreators(createActionTypes(prefix), urls))
-  class Sample extends React.Component {
-    static contextTypes = {
-      intl: intlShape
-    };
-    static propTypes = {
-      // redux state
-      sample: PropTypes.object
-    };
-
-    render() {
-      return (
-        <div>
-          <div className="b-sample-text">Hey this is a sample page, this text is styled with scss!</div>
-          <Button>Open a Wizard</Button>
-        </div>
-      );
-    }
+  render() {
+    const {ddlOptions, hiddenText, someText} = this.props.sample;
+    return (
+      <div>
+        {someText}
+        <div className="b-sample-text">Hey this is a sample page, this text is styled with scss!</div>
+        <Button>Open a Wizard</Button>
+        <Dropdown
+          selected={undefined}
+          options={ddlOptions}
+          onSelect={val => false}
+        />
+        {this.formatMessage('SAMPLE_TEXT')}
+        {hiddenText}
+        <Table columns={[]}/>
+      </div>
+    );
   }
-
-  return Sample;
 }

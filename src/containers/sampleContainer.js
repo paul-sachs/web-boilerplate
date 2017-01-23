@@ -4,6 +4,8 @@ import './sample.scss';
 import { Button, LocaleHelper, SearchBox, Table, Dropdown } from '@fss/react-components';
 import {intlShape} from 'react-intl';
 import { BaseComponent } from '../components/baseComponent.js';
+import { createSample } from '../fragments/sample/createSample.js';
+import { prefix1 } from '../reducers/sampleReducer.js';
 
 @connect(state => ({
 	sample: state.sample
@@ -26,26 +28,14 @@ export class SampleContainer extends BaseComponent {
 	};
 
 	componentWillMount() {
-    // this.Sample = createDocumentViewerComponent((store) => store.documentDashboard.fragments.documentViewer, prefix, viewerUrls);
+    this.Sample = createSample(prefix1, (store) => store.sample.fragments.sample1);
   }
 
 	render() {
-    this.ddlOptions = [
-      {label: 'Top Acquisition Segments', value: '0'},
-      {label: 'Top Attrition Segments', value: '1'},
-      {label: 'Top Segments for Action', value: '2'}
-    ];
+	  const Sample = this.Sample;
 		return (
 		  <div>
-			  <div className="b-sample-text">Hey this is a sample page, this text is styled with scss!</div>
-        <Button>Open a Wizard</Button>
-        <Dropdown
-          selected={undefined}
-          options={this.ddlOptions}
-          onSelect={val => false}
-        />
-        {this.formatMessage('SAMPLE_TEXT')}
-        <Table columns={[]}/>
+			  <Sample someText="Hi Im sample 1"/>
       </div>
 		);
 	}

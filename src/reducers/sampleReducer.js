@@ -1,8 +1,18 @@
 import * as ReducerHelper from '../utils/reducerHelper';
+import {createHandlers, initialState as sampleInitialState} from '../fragments/sample/sampleReducerHandlers.js';
 
-export const prefix = 'SAMPLE__';
+export const prefix1 = 'SAMPLE__';
+export const prefix2 = 'SAMPLE2__';
 
 const fragments = {
+  sample1: {
+    initialState: {
+      ...sampleInitialState
+    },
+    handlers: {
+      ...createHandlers(prefix1)
+    }
+  }
 };
 
 const initialState = {

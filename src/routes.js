@@ -7,5 +7,6 @@ import { NAVIGATION } from './constants/navigation.js';
 export default (
 	<Route path="/" component={AppContentContainer}>
 		<Route path={NAVIGATION.SAMPLE.PATH} component={SampleContainer} />
+    <Route path={NAVIGATION.SAMPLE2.PATH} component={SampleContainer} />
 	</Route>
 );

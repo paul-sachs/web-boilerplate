@@ -3,13 +3,17 @@ import { connect } from 'react-redux';
 import { navigate } from '../utils/navHelper.js';
 import { NAVIGATION } from '../constants/navigation.js';
 import './appContentContainer.scss';
-import {HeaderBar} from '@fss/react-components';
+import {HeaderBar, HeaderListing} from '@fss/react-components';
 
 const headerElems = [
 	{
 		label: 'Sample',
-		onClick: (e) => navigate(e, NAVIGATION.SAMPLE.PATH)
-	}
+    path: NAVIGATION.SAMPLE.PATH
+	},
+  {
+    label: 'Sample 2',
+    path: NAVIGATION.SAMPLE2.PATH
+  }
 ];
 
 @connect(state => ({
@@ -24,16 +28,21 @@ export default class Main extends Component {
 		params: PropTypes.object,
 		route: PropTypes.object,
 		routeParams: PropTypes.object,
-		routes: PropTypes.array,
+		routes: PropTypes.array
 	};
 
 	render() {
-    const listItems = [{
-      label: 'Sample',
-      action: (e) => navigate(e, NAVIGATION.SAMPLE.PATH)
-    }];
+    const itemList = headerElems.map((item, index) => (
+      <HeaderListing
+        label={item.label}
+        onClick={(e) => navigate(e, item.path)}
+        selected={item.path === this.props.location.pathname}
+        key={'listing-' + index}
+      />
+    ));
 		return (
 			<div>
+        <HeaderBar listItems={itemList}/>
         <div className="app-root">
           {this.props.children}
         </div>

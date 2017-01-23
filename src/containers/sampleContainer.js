@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import './sample.scss';
 import { Button, LocaleHelper, SearchBox, Table, Dropdown } from '@fss/react-components';
 import {intlShape} from 'react-intl';
+import { BaseComponent } from '../components/baseComponent.js';
 
 @connect(state => ({
 	sample: state.sample
 }))
-export class SampleContainer extends React.Component {
+export class SampleContainer extends BaseComponent {
   static contextTypes = {
     intl: intlShape
   };
@@ -26,10 +27,6 @@ export class SampleContainer extends React.Component {
 
 	componentWillMount() {
     // this.Sample = createDocumentViewerComponent((store) => store.documentDashboard.fragments.documentViewer, prefix, viewerUrls);
-  }
-
-  formatMessage(id, values) {
-    return this.context.intl.formatMessage({ id });
   }
 
 	render() {

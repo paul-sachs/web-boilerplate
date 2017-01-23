@@ -20,7 +20,8 @@ module.exports = {
   },
   resolveLoader: {
     alias: {
-      "locale-loader": path.join(__dirname, "./node_modules/varicent-common/webpack_loaders/locale-loader.js")
+      "locale-loader": path.join(__dirname, "./node_modules/@fss/react-components/webpack_loaders/locale-loader.js"),
+      //"varicent-common": "@fss/react-components"
     }
   },
   plugins: [

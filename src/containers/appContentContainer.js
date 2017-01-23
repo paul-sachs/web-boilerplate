@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { navigate } from '../utils/navHelper.js';
 import { NAVIGATION } from '../constants/navigation.js';
 import './appContentContainer.scss';
-import {HeaderBar} from 'varicent-common';
+import {HeaderBar} from '@fss/react-components';
 
 const headerElems = [
 	{
@@ -34,7 +34,6 @@ export default class Main extends Component {
     }];
 		return (
 			<div>
-        <HeaderBar selectedIndex={0} listItems={listItems}/>
         <div className="app-root">
           {this.props.children}
         </div>

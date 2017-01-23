@@ -17,7 +17,8 @@
     "start": "webpack-dashboard -c cyan -- node server.js",
     "prebuild": "npm run clean:build",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.production.js --progress",
-    "build:vendor" : "./node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js "
+    "build:vendor" : "./node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js ",
+    "postinstall": "npm run build:vendor"
   },
   "devDependencies": {
     "add-asset-html-webpack-plugin": "1.0.2",
@@ -89,9 +90,7 @@
     "redux": "3.5.2",
     "redux-logger": "2.6.1",
     "redux-promise": "0.5.3",
-    "reselect": "2.5.3"
-  },
-  "optionalDependencies": {
-    "varicent-common": "git+https://7ba38d71aaec4749025eec179eee6e2691c6872e:x-oauth-basic@github.ibm.com/jonaswee/common-web-2.git#test"
+    "reselect": "2.5.3",
+    "@fss/react-components": "git+ssh://git@github.ibm.com:jonaswee/react-components.git"
   }
 }

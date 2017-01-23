@@ -46,5 +46,12 @@ module.exports = merge(config, {
         loader: 'style!css!postcss'
       }
     ]
-  }
+  },
+
+  externals: {
+    'react/lib/ReactContext': 'window',
+    'react/lib/ExecutionEnvironment': 'window',
+    'react/addons': true
+  },
+
 });

@@ -24,10 +24,10 @@ export class Sample extends BaseComponent {
   }
 
   render() {
-    const {ddlOptions, hiddenText, someText} = this.props.sample;
+    const {ddlOptions, hiddenText} = this.props.sample;
     return (
       <div>
-        {this.renderButton(someText)}
+        {this.renderButton(this.props.someText)}
         <Dropdown
           selected={undefined}
           options={ddlOptions}

@@ -4,8 +4,9 @@ import './sample.scss';
 import { Button, LocaleHelper, SearchBox, Table, Dropdown } from '@fss/react-components';
 import {intlShape} from 'react-intl';
 import { BaseComponent } from '../components/baseComponent.js';
-import { createSample } from '../fragments/sample/createSample.js';
+import { overrideSample } from '../fragments/sample/createSample.js';
 import { prefix2 } from '../reducers/sampleReducer.js';
+import { Sample2 } from '../fragments/sample2/sample2Component.js';
 
 @connect(state => ({
 	sample: state.sample
@@ -28,14 +29,14 @@ export class Sample2Container extends BaseComponent {
 	};
 
 	componentWillMount() {
-    this.Sample2 = createSample(prefix2, (store) => store.sample.fragments.sample2);
+    this.Sample2 = overrideSample(prefix2, (store) => store.sample.fragments.sample2, Sample2);
   }
 
 	render() {
 	  const Sample2 = this.Sample2;
 		return (
 		  <div>
-			  <Sample2 someText="Hi Im sample 1"/>
+			  <Sample2 someText="Click Me"/>
       </div>
 		);
 	}

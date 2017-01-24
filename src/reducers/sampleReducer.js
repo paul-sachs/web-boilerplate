@@ -12,6 +12,14 @@ const fragments = {
     handlers: {
       ...createHandlers(prefix1)
     }
+  },
+  sample2: {
+    initialState: {
+      ...sampleInitialState
+    },
+    handlers: {
+      ...createHandlers(prefix2)
+    }
   }
 };
 

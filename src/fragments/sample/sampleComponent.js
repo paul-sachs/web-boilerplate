@@ -13,13 +13,21 @@ export class Sample extends BaseComponent {
     clickButton: PropTypes.func
   };
 
-  render() {
-    const {ddlOptions, hiddenText, someText} = this.props.sample;
+  renderButton(someText) {
     return (
       <div>
         {someText}
         <div className="b-sample-text">Hey this is a sample page, this text is styled with scss!</div>
-        <Button>Open a Wizard</Button>
+        <Button onClick={() => this.props.clickButton()}>More Text</Button>
+      </div>
+    );
+  }
+
+  render() {
+    const {ddlOptions, hiddenText, someText} = this.props.sample;
+    return (
+      <div>
+        {this.renderButton(someText)}
         <Dropdown
           selected={undefined}
           options={ddlOptions}

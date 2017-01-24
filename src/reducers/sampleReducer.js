@@ -1,5 +1,6 @@
 import * as ReducerHelper from '../utils/reducerHelper';
 import {createHandlers, initialState as sampleInitialState} from '../fragments/sample/sampleReducerHandlers.js';
+import {createHandlers as createHandlers2, initialState as sample2InitialState} from '../fragments/sample2/sample2ReducerHandlers.js';
 
 export const prefix1 = 'SAMPLE__';
 export const prefix2 = 'SAMPLE2__';
@@ -15,10 +16,12 @@ const fragments = {
   },
   sample2: {
     initialState: {
-      ...sampleInitialState
+      ...sampleInitialState,
+      ...sample2InitialState
     },
     handlers: {
-      ...createHandlers(prefix2)
+      ...createHandlers(prefix2),
+      ...createHandlers2(prefix2)
     }
   }
 };

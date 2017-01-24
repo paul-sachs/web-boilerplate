@@ -9,6 +9,7 @@ export class Sample2 extends Sample {
       <div>
         <div>Hey! I overode the renderButton function</div>
         <Button onClick={() => this.props.clickButton()}>{someText}</Button>
+        <Button onClick={() => this.props.clickButton2()}>{this.props.hideText}</Button>
       </div>
     );
   }

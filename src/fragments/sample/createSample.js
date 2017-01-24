@@ -13,7 +13,7 @@ export function createSample(prefix, selectState) {
 }
 
 export function overrideSample(prefix, selectState, compClass, actions) {
-  let connActions = actions ? actions : createActionCreators(createActionTypes(prefix));
+  let connActions = actions ? {...actions, ...createActionCreators(createActionTypes(prefix))} : createActionCreators(createActionTypes(prefix));
   let connCompClass = compClass ? compClass : Sample;
   const enhance = connect(store => ({
     sample: selectState(store)

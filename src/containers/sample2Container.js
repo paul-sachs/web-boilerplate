@@ -7,6 +7,8 @@ import { BaseComponent } from '../components/baseComponent.js';
 import { overrideSample } from '../fragments/sample/createSample.js';
 import { prefix2 } from '../reducers/sampleReducer.js';
 import { Sample2 } from '../fragments/sample2/sample2Component.js';
+import { createActionCreators } from '../fragments/sample2/sample2ActionCreators.js';
+import { createActionTypes } from '../fragments/sample2/sample2ActionTypes.js';
 
 @connect(state => ({
 	sample: state.sample
@@ -29,14 +31,14 @@ export class Sample2Container extends BaseComponent {
 	};
 
 	componentWillMount() {
-    this.Sample2 = overrideSample(prefix2, (store) => store.sample.fragments.sample2, Sample2);
+    this.Sample2 = overrideSample(prefix2, (store) => store.sample.fragments.sample2, Sample2, createActionCreators(createActionTypes(prefix2)));
   }
 
 	render() {
 	  const Sample2 = this.Sample2;
 		return (
 		  <div>
-			  <Sample2 someText="Click Me"/>
+			  <Sample2 someText="Show Text" hideText="Hide Text"/>
       </div>
 		);
 	}

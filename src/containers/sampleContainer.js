@@ -7,6 +7,8 @@ import { BaseComponent } from '../components/baseComponent.js';
 import { createSample } from '../fragments/sample/createSample.js';
 import { prefix1 } from '../reducers/sampleReducer.js';
 
+// TODO careful using connect like this! It will rerender on all fragment changes
+// consider using state.sample.root (if you're confused talk to Jon)
 @connect(state => ({
 	sample: state.sample
 }))

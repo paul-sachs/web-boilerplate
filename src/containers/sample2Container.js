@@ -10,6 +10,8 @@ import { Sample2 } from '../fragments/sample2/sample2Component.js';
 import { createActionCreators } from '../fragments/sample2/sample2ActionCreators.js';
 import { createActionTypes } from '../fragments/sample2/sample2ActionTypes.js';
 
+// TODO careful using connect like this! It will rerender on all fragment changes
+// consider using state.sample.root (if you're confused talk to Jon)
 @connect(state => ({
 	sample: state.sample
 }))

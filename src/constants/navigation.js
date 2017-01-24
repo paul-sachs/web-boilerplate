@@ -4,5 +4,8 @@ export const NAVIGATION = {
 	},
   SAMPLE2: {
     PATH: '/sample2'
+  },
+  ANOTHER_SAMPLE: {
+    PATH: '/anothersample'
   }
 };

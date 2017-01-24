@@ -13,6 +13,10 @@ const headerElems = [
   {
     label: 'Sample 2',
     path: NAVIGATION.SAMPLE2.PATH
+  },
+  {
+    label: 'Another Sample',
+    path: NAVIGATION.ANOTHER_SAMPLE.PATH
   }
 ];
 

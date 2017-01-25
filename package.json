@@ -107,6 +107,6 @@
     "redux-logger": "2.6.1",
     "redux-promise": "0.5.3",
     "reselect": "2.5.3",
-    "@fss/react-components": "2.1.5"
+    "@fss/react-components": "git+ssh://git@github.ibm.com:jonaswee/react-components.git"
   }
 }

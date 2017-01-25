@@ -39,12 +39,12 @@ module.exports = function(config) {
 			'sinon'
 		],
 		files: [
-			'./node_modules/babel-polyfill/dist/polyfill.js',
-      {
-        pattern : './dist/vendorLib.js',
-        watched : false,
-        served  : true
-      },
+			// './node_modules/babel-polyfill/dist/polyfill.js',
+      // {
+      //   pattern : './dist/vendorLib.js',
+      //   watched : false,
+      //   served  : true
+      // },
 			testFiles
 		],
 		plugins: [
@@ -59,7 +59,9 @@ module.exports = function(config) {
 		browsers: browsers,
 		customLaunchers: customLaunchers,
 		preprocessors: {
-			[testFiles]: ['webpack', 'sourcemap']
+			[testFiles]: 'webpack',
+      // 'tests/**/*.js': ['webpack'],
+      // 'src/**/*.js': ['webpack']
 		},
 		colors: true,
 		reportSlowerThan: 100,

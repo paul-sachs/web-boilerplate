@@ -61,7 +61,7 @@ module.exports = function(config) {
 		preprocessors: {
 			[testFiles]: 'webpack',
       // 'tests/**/*.js': ['webpack'],
-      // 'src/**/*.js': ['webpack']
+      'src/**/*.js': ['webpack']
 		},
 		colors: true,
 		reportSlowerThan: 100,

@@ -43,7 +43,7 @@ var testConfig = {
       {
         test: /\.js$/,
         exclude: [
-          path.resolve('src/components/'),
+          path.resolve('src/'),
           path.resolve('node_modules/')
         ],
         loader: 'babel'

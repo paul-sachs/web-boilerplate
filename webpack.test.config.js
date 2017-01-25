@@ -38,21 +38,23 @@ var testConfig = {
         ],
         loader: 'babel-loader',
         query: {
-          presets: [["es2015", { "modules": false }], "react", "stage-0"],
+          presets: ["es2015", "react", "stage-0"],
           plugins: ["transform-runtime", "transform-decorators-legacy", "react-hot-loader/babel"]
         }
       },
       // transpile and instrument only testing sources with isparta
-      // {
-      //   test: /\.js$/,
-      //   enforce: 'pre',
-      //   include: path.resolve('src/'),
-      //   loader: 'isparta-loader',
-      //   query: {
-      //     presets: [["es2015", { "modules": false }], "react", "stage-0"],
-      //     plugins: ["transform-runtime", "transform-decorators-legacy", "react-hot-loader/babel"]
-      //   }
-      // },
+      {
+        test: /\.js$/,
+        // enforce: 'pre',
+        include: path.resolve('src/'),
+        loader: 'isparta-loader',
+        query: {
+          babel: {
+            presets: ["es2015", "react", "stage-0"],
+            plugins: ["transform-runtime", "transform-decorators-legacy", "react-hot-loader/babel"]
+          }
+        }
+      },
       // TODO null-loader?
       // Sass
       {

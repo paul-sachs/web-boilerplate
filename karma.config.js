@@ -65,7 +65,7 @@ module.exports = function(config) {
 		},
 		colors: true,
 		reportSlowerThan: 100,
-		reporters: ['spec', 'coverage'],
+		reporters: ['spec'],
 		coverageReporter: {
 			dir: 'tests-code-coverage',
 			includeAllSources: true,

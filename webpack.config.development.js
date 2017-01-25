@@ -12,7 +12,6 @@ const GLOBALS = {
 };
 
 module.exports = merge(config, {
-  debug: true,
   cache: true,
   devtool: 'inline-source-map',
   entry: {
@@ -27,7 +26,7 @@ module.exports = merge(config, {
     new webpack.DefinePlugin(GLOBALS)
   ],
   module: {
-    loaders: [
+    rules: [
       // Sass
       {
         test: /\.scss$/,
@@ -35,15 +34,15 @@ module.exports = merge(config, {
           path.resolve(__dirname, 'src')
         ],
         loaders: [
-          'style',
-          'css',
-          'postcss',
-          { loader: 'sass', query: { outputStyle: 'expanded' } }
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          { loader: 'sass-loader', query: { outputStyle: 'expanded' } }
         ]
       },
       {
         test: /\.css$/,
-        loader: 'style!css!postcss'
+        loader: 'style-loader!css-loader!postcss-loader'
       }
     ]
   },

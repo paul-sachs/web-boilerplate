@@ -30,21 +30,20 @@ module.exports = {
     })
   ],
   module: {
-    preloaders: [
+    rules: [
       {
         test: /\.jsx$/,
+        enforce: 'pre',
         loaders: ['eslint-loader']
-      }
-    ],
-    loaders: [
+      },
       {
         test: /\.jsx?$/,
         include: path.resolve(__dirname, 'src'),
-        loader: 'babel'
+        loader: 'babel-loader'
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
-        loader: 'url',
+        loader: 'url-loader',
         query: {
           limit: 8192,
           name: 'images/[name].[ext]?[hash]'
@@ -53,7 +52,7 @@ module.exports = {
       // Fonts
       {
         test: /\.(woff|woff2|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url',
+        loader: 'url-loader',
         query: {
           limit: 8192,
           name: 'fonts/[name].[ext]?[hash]'
@@ -62,13 +61,14 @@ module.exports = {
         test: /\.properties/,
         loader: "locale-loader"
       }
+
     ]
   },
-  postcss: function () {
-    return [
-      autoprefixer({
-        browsers: ['last 2 versions']
-      })
-    ];
-  }
+  // postcss: function () {
+  //   return [
+  //     autoprefixer({
+  //       browsers: ['last 2 versions']
+  //     })
+  //   ];
+  // }
 };

@@ -17,7 +17,7 @@
     "start": "webpack-dashboard -c cyan -- node server.js",
     "prebuild": "npm run clean:build",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.production.js --progress",
-    "build:vendor" : "./node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js ",
+    "build:vendor" : "cross-env webpack --config webpack.config.vendor.js",
     "postinstall": "npm run build:vendor",
     "test": "node_modules\\.bin\\karma start --single-run --no-auto-watch karma.config.js",
     "test:watch": "node_modules\\.bin\\karma start --no-auto-watch karma.config.js",

@@ -8,7 +8,7 @@ const nonJsDeps = {
 };
 const vendorsToExclude = {
   autoprefixer: true,
-  "babel-runtime": true,
+  'babel-runtime': true,
   express: true,
   // "react-datagrid": true,
   // react: true,

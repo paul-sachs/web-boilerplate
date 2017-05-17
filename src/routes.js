@@ -1,15 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router';
-import AppContentContainer from './containers/appContentContainer.js';
-import { SampleContainer }  from './containers/sampleContainer.js';
-import { Sample2Container }  from './containers/sample2Container.js';
-import { AnotherSampleContainer }  from './containers/anotherSampleContainer.js';
-import { NAVIGATION } from './constants/navigation.js';
+import AppContent from './components/content';
+import Page1 from './pages/page1';
+
+import { NAVIGATION } from './constants/navigation';
 
 export default (
-	<Route path="/" component={AppContentContainer}>
-		<Route path={NAVIGATION.SAMPLE.PATH} component={SampleContainer} />
-    <Route path={NAVIGATION.SAMPLE2.PATH} component={Sample2Container} />
-    <Route path={NAVIGATION.ANOTHER_SAMPLE.PATH} component={AnotherSampleContainer} />
+	<Route path="/" component={AppContent}>
+		<Route path={NAVIGATION.SAMPLE.PATH} component={Page1} />
 	</Route>
 );
+

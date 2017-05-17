@@ -1,20 +1,10 @@
 // Polyfills must be imported first!
 // import 'babel-polyfill';
-import React, { Component, PropTypes } from 'react';
-import { AppContainer } from './appContainer.js';
+import React from 'react';
 import { Provider } from 'react-redux';
+import AppContainer from './app-container';
 
-export default class App extends Component {
-  static propTypes = {
-    store: PropTypes.object,
-    history: PropTypes.object
-  };
-
-  render() {
-    return (
-      <Provider store={this.props.store}>
-        <AppContainer store={this.props.store} history={this.props.history}/>
-      </Provider>
-    );
-  }
-}
+export default ({ store, history }) =>
+	<Provider store={store}>
+		<AppContainer history={history} />
+	</Provider>;

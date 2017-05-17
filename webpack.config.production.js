@@ -5,31 +5,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const config = require('./webpack.config.base');
 
-const GLOBALS = {
-  'process.env': {
-    'NODE_ENV': JSON.stringify('production')
-  },
-  __DEV__: false
-};
-
 module.exports = merge(config, {
-  debug: false,
   devtool: 'cheap-module-source-map',
   entry: {
-    application: 'production',
-    vendor: ['react', 'react-dom', 'react-redux', 'react-router', 'react-router-redux', 'redux']
+    application: './src/index.js'
   },
   plugins: [
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: path.join(__dirname, '../src/client/assets/images'),
-    //     to: 'images'
-    //   }
-    // ]),
-    // Avoid publishing files when compilation fails
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin(GLOBALS),
-    new webpack.optimize.DedupePlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
@@ -38,11 +20,7 @@ module.exports = merge(config, {
       output: {
         comments: false
       },
-      sourceMap: false
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false
+      sourceMap: true
     }),
     new ExtractTextPlugin({
       filename: 'css/app.css',
@@ -51,27 +29,27 @@ module.exports = merge(config, {
   ],
   module: {
     noParse: /\.min\.js$/,
-    loaders: [
+    rules: [
       // Sass
       {
         test: /\.scss$/,
         include: [
           path.resolve(__dirname, 'src')
         ],
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style',
-          loader: [
-            { loader: 'css', query: { sourceMap: true } },
-            'postcss',
-            { loader: 'sass', query: { outputStyle: 'compressed' } }
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            { loader: 'css-loader', options: { sourceMap: true } },
+            'postcss-loader',
+            { loader: 'sass-loader', options: { outputStyle: 'compressed' } }
           ]
         })
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style',
-          loader: ['css', 'postcss']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'postcss-loader']
         })
       }
     ]

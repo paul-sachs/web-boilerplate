@@ -1,0 +1,13 @@
+{
+	"require": [
+		"babel-register"
+	],
+	"sourceMap": false,
+	"instrument": false,
+	"exclude": [
+		"test.js",
+		"test-helpers/**.js",
+		"dist/**"
+	],
+	"all": true
+}

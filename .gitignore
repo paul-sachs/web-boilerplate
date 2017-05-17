@@ -2,3 +2,12 @@ node_modules
 .idea
 dist/*
 tests-code-coverage/
+ts-dist
+.awcache
+npm-debug.log
+.DS_Store
+__temp__
+coverage
+.nyc_output
+.jshintignore
+.jshintrc

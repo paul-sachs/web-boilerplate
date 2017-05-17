@@ -1,9 +1,32 @@
 {
-  "presets": [["es2015", { "modules": false }], "react", "stage-0"],
-  "plugins": ["transform-runtime", "transform-decorators-legacy", "react-hot-loader/babel"],
-  "env": {
-    "production": {
-      "plugins": ["transform-react-remove-prop-types", "transform-react-constant-elements"]
-    }
-  }
+  	"presets": [["es2015", {"modules": false}], "react", "stage-0"],
+  	"plugins": ["transform-class-properties", "transform-runtime", "transform-decorators-legacy", "react-hot-loader/babel"],
+  	"env": {
+		"production": {
+			"plugins": ["transform-react-remove-prop-types", "transform-react-constant-elements"]
+		},
+		"test": {
+			"presets": [["es2015", {"modules": "commonjs"}], "react", "stage-0"],
+			"plugins": [
+				["module-resolver", {
+					"alias": {
+						"varicent-common": "@fss/react-components"
+					}
+				}],
+				"istanbul",
+				[ "transform-require-stub", {
+					"extensions": [".css", ".sass", ".png", ".properties"],
+					"defaultStub": {
+						"path": true
+					},
+					".properties": {
+						"value": {
+							"message": "stubbed"
+						}
+					}
+				}]
+			],
+			"sourceMaps": "inline"
+		}
+	}
 }

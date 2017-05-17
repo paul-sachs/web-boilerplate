@@ -2,16 +2,19 @@
 // import 'babel-polyfill';
 import React from 'react';
 import * as ReactDOM from 'react-dom';
-import { store } from './store';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import App from './app.js';
+
+import App from './app';
+import store from './store';
 import '../node_modules/@fss/react-components/dist/react-components.css';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-function run() {
-	ReactDOM.render(<App store={store} history={history}/>, document.getElementById('root'));
-}
+const render = Component => {
+	ReactDOM.render(<Component store={store} history={history} />, document.getElementById('root'));
+};
 
-run();
+render(App);
+if (module.hot) module.hot.accept('./app', () => render(require('./app').default));
+

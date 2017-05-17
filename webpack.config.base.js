@@ -2,8 +2,8 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
 module.exports = {
   output: {
@@ -16,30 +16,38 @@ module.exports = {
       path.join(__dirname, 'src'),
       'node_modules'
     ],
-    extensions: ['.js', '.jsx', '.json', '.scss']
+    extensions: ['.js', '.jsx', '.json', '.scss', '.ts', '.tsx']
   },
   resolveLoader: {
     alias: {
-      "locale-loader": path.join(__dirname, "./node_modules/@fss/react-components/webpack_loaders/locale-loader.js")
+      'locale-loader': path.join(__dirname, './node_modules/@fss/react-components/webpack_loaders/locale-loader.js')
     }
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'template/index.html'),
+      title: 'Web Boilerplate 2.0'
+    }),
+    new AddAssetHtmlPlugin({
+      filepath: path.resolve(__dirname, 'dist/vendorLib.js'),
+      includeSourcemap: false
+    }),
     new webpack.DllReferencePlugin({
       context: '.',
       manifest: require('./dist/vendorLib-manifest.json')
-    })
+    }),
+    new webpack.DefinePlugin(JSON.stringify(process.env))
   ],
   module: {
     rules: [
       {
-        test: /\.jsx$/,
-        enforce: 'pre',
-        loaders: ['eslint-loader']
-      },
-      {
         test: /\.jsx?$/,
         include: path.resolve(__dirname, 'src'),
         loader: 'babel-loader'
+      },
+      {
+        test: /src\/lib\/.*\.js$/,
+        loader: 'imports-loader?this=>window'
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
@@ -59,16 +67,9 @@ module.exports = {
         }
       }, {
         test: /\.properties/,
-        loader: "locale-loader"
+        loader: 'locale-loader'
       }
 
     ]
-  },
-  // postcss: function () {
-  //   return [
-  //     autoprefixer({
-  //       browsers: ['last 2 versions']
-  //     })
-  //   ];
-  // }
+  }
 };

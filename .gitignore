@@ -1,8 +1,8 @@
 node_modules
 .idea
-dist/*
+build
+stats.json
 tests-code-coverage/
-ts-dist
 .awcache
 npm-debug.log
 .DS_Store

@@ -24,8 +24,7 @@
     "test:snapshot": "yarn test -- --update-snapshots",
     "lint": "eslint ./src",
     "validate": "yarn check --integrity",
-    "coverage": "nyc yarn test",
-    "commit": "commit-wizard"
+    "coverage": "nyc yarn test"
   },
   "scripts-info": {
     "scripts": "Display information about the scripts",
@@ -156,7 +155,6 @@
   },
   "config": {
     "pre-git": {
-      "commit-msg": "simple",
       "pre-commit": ["yarn test", "yarn lint", "yarn validate"],
       "pre-push": [],
       "post-commit": [],

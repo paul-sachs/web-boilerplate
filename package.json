@@ -22,7 +22,7 @@
 		"test": "cross-env NODE_PATH=./src BABEL_ENV=test ava",
 		"test:watch": "yarn test -- --watch",
 		"test:snapshot": "yarn test -- --update-snapshots",
-		"lint": "eslint src",
+		"lint": "eslint ./src",
 		"validate": "yarn check --integrity",
 		"coverage": "nyc yarn test"
 	},
@@ -104,11 +104,11 @@
 		"style-loader": "0.13.1",
 		"url-loader": "0.5.7",
 		"webpack": "2.2.0",
+		"webpack-chain": "^3.3.0",
 		"webpack-dashboard": "1.0.0-2",
 		"webpack-dev-middleware": "1.10.2",
 		"webpack-dev-server": "^2.4.5",
-		"webpack-hot-middleware": "2.12.2",
-		"webpack-merge": "0.14.1"
+		"webpack-hot-middleware": "2.12.2"
 	},
 	"dependencies": {
 		"@fss/react-components": "3.5.5",

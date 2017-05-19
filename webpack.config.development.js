@@ -1,7 +1,5 @@
-const merge = require('webpack-merge');
 const webpack = require('webpack');
 const config = require('./webpack.config.base');
-const path = require('path');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 require('dotenv-extended').load({
@@ -15,58 +13,31 @@ const localClient =
   ':' +
   process.env.UI_PORT;
 
-module.exports = merge(config, {
-	cache: true,
-	devtool: 'inline-source-map',
-	entry: {
-		application: ['react-hot-loader/patch', './src/index.js']
-	},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NamedModulesPlugin(),
-		new OpenBrowserPlugin({ url: localClient })
-	],
-	module: {
-		rules: [
-      		// Sass
-			{
-				test: /\.scss$/,
-				include: [path.resolve(__dirname, 'src')],
-				loaders: [
-					'style-loader',
-					'css-loader',
-					'postcss-loader',
-          			{ loader: 'sass-loader', query: { outputStyle: 'expanded' } }
-				]
-			},
-			{
-				test: /\.css$/,
-				loader: 'style-loader!css-loader!postcss-loader'
-			},
-     		// Fonts
-			{
-				test: /\.(woff|woff2|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-				loader: 'url-loader',
-				query: {
-					limit: 8192,
-					name: 'fonts/[name].[ext]?[hash]'
-				}
-			},
-			{
-				test: /\.properties/,
-				loader: 'locale-loader'
-			}
-		]
-	},
+config.cache(true);
 
-	externals: {
-		'react/lib/ReactContext': 'window',
-		'react/lib/ExecutionEnvironment': 'window',
-		'react/addons': true
-	},
-	devServer: {
-		port: process.env.UI_PORT,
-		hot: true,
-		historyApiFallback: true
-	}
+config.devtool('inline-source-map');
+
+config.entry('application')
+	.add('react-hot-loader/patch');
+
+config.plugin('HMR')
+	.use(webpack.HotModuleReplacementPlugin);
+
+config.plugin('NamedModules')
+	.use(webpack.NamedModulesPlugin);
+
+config.plugin('OpenBrowser')
+	.use(OpenBrowserPlugin, [{ url: localClient }]);
+
+config.externals({
+	'react/lib/ReactContext': 'window',
+	'react/lib/ExecutionEnvironment': 'window',
+	'react/addons': true
 });
+
+config.devServer
+	.port(process.env.UI_PORT)
+	.hot(true)
+	.historyApiFallback(true);
+
+module.exports = config.toConfig();

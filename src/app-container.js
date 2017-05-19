@@ -19,5 +19,5 @@ const view = ({ locale: { localeCode, messages }, history }) => {
 };
 
 export default connect(state => ({
-	locale: state.locale
+	locale: state.ui.locale
 }))(view);

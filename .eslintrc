@@ -48,7 +48,7 @@
 		"import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": true, "peerDependencies": true}],
 		"no-tabs": 0,
 		"arrow-parens": [2, "as-needed"],
-		"import/prefer-default-export": 1,
+		"import/prefer-default-export": 0,
 		"global-require": 1
 	},
 	"plugins": [

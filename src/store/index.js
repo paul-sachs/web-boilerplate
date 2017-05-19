@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 
-import sagas from '../sagas';
+import sagas from './sagas';
 import rootReducer from './reducers';
 
 const logger = createLogger({

@@ -12,31 +12,17 @@
     "architecture"
   ],
   "scripts": {
-    "scripts": "npm-scripts-info",
-    "clean:build": "rimraf build/client",
-    "start": "node server.js",
     "prebuild": "yarn clean:build",
-    "build": "cross-env NODE_ENV=production webpack --config ./webpack.config.production.js --progress",
-    "build:vendor": "cross-env webpack --config webpack.config.vendor.js",
-    "postinstall": "yarn build:vendor",
     "test": "cross-env NODE_PATH=./src BABEL_ENV=test ava",
     "test:watch": "yarn test -- --watch",
     "test:snapshot": "yarn test -- --update-snapshots",
-    "lint": "eslint ./src",
-    "validate": "yarn check --integrity",
     "coverage": "nyc yarn test"
   },
   "scripts-info": {
-    "scripts": "Display information about the scripts",
-    "clean:build": "Clean the build directory for the next build.",
     "start": "Start a development server configured based on environment variables (UI_PORT, UI_HOST, etc)",
-    "build": "Build production-style code, ready to be deployed.",
-    "build:vendor": "Build common vendor dependencies (all packages under dependencies)",
     "test": "Run all tests once",
     "test:watch": "Run all tests in watch mode",
     "test:snapshot": "Update any snapshot tests to new return values. Be aware that this will wipe out previous snapshot results.",
-    "lint": "Check for any eslint discrepencies",
-    "validate": "Check for any improperly installed dependencies.",
     "coverage": "Generate coverage report."
   },
   "devDependencies": {
@@ -155,7 +141,7 @@
   },
   "config": {
     "pre-git": {
-      "pre-commit": ["yarn test", "yarn lint", "yarn validate"],
+      "pre-commit": [],
       "pre-push": [],
       "post-commit": [],
       "post-checkout": [],

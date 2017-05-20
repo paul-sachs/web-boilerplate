@@ -40,18 +40,6 @@ config.plugin('Html')
 		title: 'Web Boilerplate 2.0'
 	}]);
 
-config.plugin('AddAssets')
-	.use(AddAssetHtmlPlugin, [{
-		filepath: path.resolve(__dirname, 'build/vendor/vendorLib.js'),
-		includeSourcemap: false
-	}]);
-
-config.plugin('DLLReference')
-	.use(webpack.DllReferencePlugin, [{
-		context: '.',
-		manifest: vendorManifest
-	}]);
-
 config.plugin('Define')
 	.use(webpack.DefinePlugin, [
 		JSON.stringify(process.env)

@@ -7,7 +7,7 @@
 	"exclude": [
 		"test.js",
 		"test-helpers/**.js",
-		"dist/**"
+		"build/**"
 	],
 	"all": true
 }

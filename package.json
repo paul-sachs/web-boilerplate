@@ -13,10 +13,10 @@
   ],
   "scripts": {
     "prebuild": "yarn clean:build",
-    "test": "cross-env NODE_PATH=./src BABEL_ENV=test ava",
+    "test": "cross-env NODE_PATH=./src NODE_ENV=test ava",
     "test:watch": "yarn test -- --watch",
     "test:snapshot": "yarn test -- --update-snapshots",
-    "coverage": "nyc yarn test"
+    "coverage": "nyc --all yarn test"
   },
   "scripts-info": {
     "start": "Start a development server configured based on environment variables (UI_PORT, UI_HOST, etc)",
@@ -130,7 +130,9 @@
       "babel-register",
       "./test-helpers/setup-browser-env.js"
     ],
-    "babel": "inherit",
+    "babel": {
+      "presets": ["es2015", "react", "stage-0"]
+    },
     "source": [
       "src/**.js"
     ],

@@ -5,7 +5,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const Config = require('webpack-chain');
-const vendorManifest = require('./build/vendor/vendorLib-manifest.json');
 
 const config = new Config();
 

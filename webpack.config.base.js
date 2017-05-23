@@ -3,8 +3,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const Config = require('webpack-chain');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const vendorManifest = require('./build/vendor/vendorLib-manifest.json');
 
 const config = new Config();
 
@@ -38,6 +39,19 @@ config.plugin('Html')
 		template: path.resolve(__dirname, 'template/index.html'),
 		title: 'Web Boilerplate 2.0'
 	}]);
+
+config.plugin('AddAssets')
+	.use(AddAssetHtmlPlugin, [{
+		filepath: path.resolve(__dirname, 'build/vendor/vendorLib.js'),
+		includeSourcemap: false
+	}]);
+
+config.plugin('DLLReference')
+	.use(webpack.DllReferencePlugin, [{
+		context: '.',
+		manifest: vendorManifest
+	}]);
+
 
 config.plugin('Define')
 	.use(webpack.DefinePlugin, [
@@ -79,7 +93,7 @@ config.module
 
 config.module
 	.rule('Images')
-		.test(/\.(png|jpg|jpeg|gif|svg)$/)
+		.test(/\.(png|jpg|jpeg|gif)$/)
 		.use('url')
 			.loader('url-loader')
 			.options({
@@ -102,6 +116,13 @@ config.module
 		.test(/\.properties/)
 		.use('locale')
 			.loader('locale-loader');
+
+
+config.module
+	.rule('SVG')
+		.test(/\.svg$/)
+		.use('svg-sprite')
+			.loader('svg-sprite-loader');
 
 module.exports = config;
 

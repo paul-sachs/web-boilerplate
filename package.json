@@ -12,7 +12,9 @@
     "architecture"
   ],
   "scripts": {
-    "prebuild": "yarn clean:build",
+	"build:vendor": "cross-env NODE_ENV=production webpack --config ./webpack.config.vendor.js --progress",
+	"start": "node server.js",
+	"build": "cross-env NODE_ENV=production webpack --config ./webpack.config.production.js --progress",
     "test": "cross-env NODE_PATH=./src NODE_ENV=test ava",
     "test:watch": "yarn test -- --watch",
     "test:snapshot": "yarn test -- --update-snapshots",
@@ -20,6 +22,7 @@
   },
   "scripts-info": {
     "start": "Start a development server configured based on environment variables (UI_PORT, UI_HOST, etc)",
+	"build": "Build for production",
     "test": "Run all tests once",
     "test:watch": "Run all tests in watch mode",
     "test:snapshot": "Update any snapshot tests to new return values. Be aware that this will wipe out previous snapshot results.",
@@ -88,6 +91,7 @@
     "sass-loader": "4.0.1",
     "source-map-loader": "^0.2.1",
     "style-loader": "0.13.1",
+    "svg-sprite-loader": "^3.0.1",
     "url-loader": "0.5.7",
     "webpack": "2.2.0",
     "webpack-chain": "^3.3.0",
@@ -131,7 +135,11 @@
       "./test-helpers/setup-browser-env.js"
     ],
     "babel": {
-      "presets": ["es2015", "react", "stage-0"]
+      "presets": [
+        "es2015",
+        "react",
+        "stage-0"
+      ]
     },
     "source": [
       "src/**.js"

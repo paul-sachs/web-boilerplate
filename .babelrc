@@ -8,11 +8,6 @@
 		"test": {
 			"presets": [["es2015", {"modules": "commonjs"}], "react", "stage-0"],
 			"plugins": [
-				["module-resolver", {
-					"alias": {
-						"varicent-common": "@fss/react-components"
-					}
-				}],
 				"istanbul",
 				[ "transform-require-stub", {
 					"extensions": [".css", ".sass", ".png", ".properties"],

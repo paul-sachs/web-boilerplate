@@ -3,6 +3,7 @@ import { withProps, compose, withHandlers, pure } from 'recompose';
 import { connect } from 'react-redux';
 import { userClickedButton, userClickedFetch } from 'store/actions';
 import { Button } from '@fss/react-components';
+import glyph from '@fss/react-components/dist/icons/add.svg';
 
 // Unfortunately, compose is a difficult function to type and the typings for
 // it are currently underway. We'll fake it for now, assuming <any> in the intermediate stages.
@@ -26,7 +27,7 @@ const enhance = compose(
 const view = ({ count, handleClick, handleClickFetch }) =>
 	<div>
 		hey buddy {count}
-		<Button onClick={handleClick}>YO</Button>
+		<Button onClick={handleClick} icon={{ glyph: `#${glyph.id}`, alt: 'YO'}} >YO</Button>
 		<Button onClick={handleClickFetch}>Fetch</Button>
 	</div>;
 
